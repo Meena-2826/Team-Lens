@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamLens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e95f76;
+        }
+        header {
+            background-color: #fafaf4;
+            color: rgb(10, 10, 10);
+            text-align: center;
+            padding: 50px 0;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+        .options {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .options a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .options a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to TeamLens</h1>
+</header>
+
+<div class="container">
+    <h2>Sign In</h2>
+    <form id="signInForm">
+        <input type="text" id="managerId" placeholder="Enter Manager ID" required>
+        <input type="password" id="managerPassword" placeholder="Enter Password" required>
+        <button type="submit">Sign In</button>
+    </form>
+
+    <div class="options hidden" id="managerOptions">
+        <h3>Manager Options</h3>
+        <div class="options">
+            <a href="/add-employee">Add Employee</a>
+            <a href="/assign-task">Assign Task</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const validManagerId = 'admin'; // Hardcoded Manager ID for demo
+    const validPassword = 'admin123'; // Hardcoded Password for demo
+
+    const signInForm = document.getElementById('signInForm');
+    const managerOptions = document.getElementById('managerOptions');
+
+    signInForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const managerId = document.getElementById('managerId').value;
+        const managerPassword = document.getElementById('managerPassword').value;
+
+        if (managerId === validManagerId && managerPassword === validPassword) {
+            managerOptions.classList.remove('hidden');  // Show manager options
+            signInForm.reset(); // Clear the form
+        } else {
+            alert('Invalid Manager ID or Password');
+        }
+    });
+</script>
+
+</body>
+</html>
